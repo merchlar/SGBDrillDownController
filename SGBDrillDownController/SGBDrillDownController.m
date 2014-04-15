@@ -105,6 +105,22 @@ NSString * const SGBDrillDownControllerDidReplaceNotification = @"SGBDrillDownCo
     return [self initWithNavigationBarClass:[UINavigationBar class] toolbarClass:[UIToolbar class]];
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    
+    if (self)
+    {
+        self.restorationClass = self.class;
+        
+        _navigationBarClass = [UINavigationBar class];
+        _toolbarClass = [UIToolbar class];
+        _toolbarsHidden = YES;
+        _leftControllerWidth = 320;
+        _leftViewControllers = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (id)initWithNavigationBarClass:(Class)navigationBarClass toolbarClass:(Class)toolbarClass
 {
     self = [super initWithNibName:nil bundle:nil];
@@ -510,7 +526,27 @@ static NSString * const kStateRestorationHadRestorableRightViewControllerKey = @
         self.swipeBackGestureRecognizer = swipeBackGestureRecognizer;
     }
 #endif
+    
+//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back-btn"]
+//                                                                   style:UIBarButtonItemStyleBordered
+//                                                                  target:self
+//                                                                  action:@selector(goBack:)];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"BACK"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(goBack:)];
+    
+    self.navigationItem.leftBarButtonItem = backButton;
 }
+
+- (void)goBack:(id)sender {
+    
+    NSLog(@"goBack SegueViewController");
+
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 
 - (void)viewDidUnload
 {
