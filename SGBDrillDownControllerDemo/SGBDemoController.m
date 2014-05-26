@@ -80,21 +80,23 @@ static NSString * const kStateRestorationNumberKey = @"number";
 
 - (UIColor *)backgroundColor
 {
-    UIColor *baseColor = [UIColor brownColor];
-    if (self.number > 0)
-    {
-        switch (self.number % 7)
-        {
-            case 1: baseColor = [UIColor redColor]; break;
-            case 2: baseColor = [UIColor orangeColor]; break;
-            case 3: baseColor = [UIColor yellowColor]; break;
-            case 4: baseColor = [UIColor greenColor]; break;
-            case 5: baseColor = [UIColor cyanColor]; break;
-            case 6: baseColor = [UIColor blueColor]; break;
-        }
-    }
-
-    return (self.backgroundHasAlpha ? [baseColor colorWithAlphaComponent:0.5] : baseColor);
+//    UIColor *baseColor = [UIColor brownColor];
+//    if (self.number > 0)
+//    {
+//        switch (self.number % 7)
+//        {
+//            case 1: baseColor = [UIColor redColor]; break;
+//            case 2: baseColor = [UIColor orangeColor]; break;
+//            case 3: baseColor = [UIColor yellowColor]; break;
+//            case 4: baseColor = [UIColor greenColor]; break;
+//            case 5: baseColor = [UIColor cyanColor]; break;
+//            case 6: baseColor = [UIColor blueColor]; break;
+//        }
+//    }
+//
+//    return (self.backgroundHasAlpha ? [baseColor colorWithAlphaComponent:0.5] : baseColor);
+    
+    return [UIColor clearColor];
 }
 
 - (void) updateBackgroundColor
